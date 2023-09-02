@@ -30,7 +30,8 @@ model food_type {
 model like_res {
   user_id    Int
   res_id     Int
-  date_like  DateTime?  @db.DateTime(0)
+  date_like  String?    @db.VarChar(255)
+  like       Int?
   user       user       @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "like_res_ibfk_1")
   restaurant restaurant @relation(fields: [res_id], references: [res_id], onDelete: NoAction, onUpdate: NoAction, map: "like_res_ibfk_2")
 
@@ -55,7 +56,7 @@ model rate_res {
   user_id    Int
   res_id     Int
   amount     Int?
-  date_rate  DateTime?  @db.DateTime(0)
+  date_rate  String?    @db.VarChar(255)
   user       user       @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "rate_res_ibfk_1")
   restaurant restaurant @relation(fields: [res_id], references: [res_id], onDelete: NoAction, onUpdate: NoAction, map: "rate_res_ibfk_2")
 
